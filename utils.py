@@ -2,6 +2,12 @@ import requests
 
 api_endpoint = "https://ResourceOverflowBot.pixo.repl.co/api"
 
+def get_topics_from_type(type):
+	return requests.get(f"{api_endpoint}/{type}/topics").json()
+
+def get_resources_list(type, topic):
+	return requests.get(f"{api_endpoint}/{type}/{topic}").json()
+
 def get_resource_types():
 	return requests.get(f"{api_endpoint}/resources").json()
 

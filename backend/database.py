@@ -13,7 +13,7 @@ class Database:
 		return self.get_distinct_topics('books')
 
 	def get_course_topics(self):
-		return self.get_dictinct_topics('courses')
+		return self.get_distinct_topics('courses')
 
 	def get_distinct_topics(self, resource):
 		return self.database[resource].distinct("topic")
