@@ -1,1 +1,2 @@
 git+https://github.com/Pycord-Development/pycord#egg=py-cord[voice]
+flask
