@@ -28,7 +28,7 @@ class Menus(commands.Cog):
 		type: discord.Option(
 			str,
 			"type of resource",
-			choices=["books", "courses"],
+			choices=get_resource_types(),
 			required=True
 		),
 		topic
@@ -40,7 +40,6 @@ class Menus(commands.Cog):
 		properties_of_resources = list(map(get_properties_only, resources))
 		properties_of_resources = [properties_of_resources[i:i+5] for i in range(0, len(properties_of_resources), 5)]
 		if resources != []:
-			embed = discord.Embed(colour = discord.Colour.red())
 			for divided_list in properties_of_resources:
 				vertical_list=""
 				for properties in divided_list:
@@ -88,7 +87,6 @@ class Menus(commands.Cog):
 			properties_of_resources = list(map(get_properties_only, resources))
 			properties_of_resources = [properties_of_resources[i:i+5] for i in range(0, len(properties_of_resources), 5)]
 			if resources != []:
-				embed = discord.Embed(colour = discord.Colour.red())
 				for divided_list in properties_of_resources:
 					vertical_list=""
 					for properties in divided_list:
