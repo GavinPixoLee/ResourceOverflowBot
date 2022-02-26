@@ -1,4 +1,3 @@
-
 import discord
 from discord.ext import commands
 from discord.ui import Button, View
@@ -9,8 +8,6 @@ from utils import *
 class Menus(commands.Cog):
 	def __init__(self, client):
 		self.client = client
-
-
 		
 	@commands.slash_command(guild_ids=[865981652856733707], name="help", description="Don't know where to start? Use the /help command!")
 	async def help(self, ctx):
@@ -18,9 +15,7 @@ class Menus(commands.Cog):
 		embed.set_author(name="Help")
 		embed.add_field(name="/find_me_a_resource", value="This command will bring up interactive messages that will help you find you something to start with.", inline=False)
 		embed.add_field(name="/quick_search <Resource Type> <Topic>", value="This command will bring you directly to the list of URL.", inline=False)
-
 		await ctx.respond(embed=embed)
-
 
 	@commands.slash_command(guild_ids=[865981652856733707], name="quick_search", description="Find something to start your learning with.")
 	async def quick_search(self,
@@ -33,6 +28,7 @@ class Menus(commands.Cog):
 		),
 		topic
 	):
+		await ctx.defer()
 		resources = get_resources_list(type, topic)
 		def get_properties_only(dict):
 			return (dict["name"], dict["url"])
@@ -103,7 +99,6 @@ class Menus(commands.Cog):
 				embed.set_author(name=f"I can't seem to find {response} {resource_type}.")
 				embed.add_field(name="You might want to check your spelling.", value="Try /find_me_a_resource again.", inline=False)
 				await ctx.respond(embed=embed)
-
 			
 		for item in resource_type_list:
 			locals().__setitem__(
